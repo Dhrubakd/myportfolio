@@ -20,108 +20,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2330812727201394"
         crossorigin="anonymous"></script>
     
-    <!-- Enhanced AdSense Debug Script -->
-    <script>
-        window.adsbygoogle = window.adsbygoogle || [];
-        
-        // Enhanced debug function
-        function checkAdSenseStatus() {
-            console.log('=== AdSense Detailed Status Check ===');
-            console.log('Current URL:', window.location.href);
-            console.log('User Agent:', navigator.userAgent);
-            console.log('adsbygoogle array length:', window.adsbygoogle.length);
-            
-            // Check if AdSense script loaded
-            const adsenseScript = document.querySelector('script[src*="adsbygoogle.js"]');
-            console.log('AdSense script loaded:', !!adsenseScript);
-            
-            // Check ad containers
-            const adContainers = document.querySelectorAll('.adsbygoogle');
-            console.log('Total ad containers found:', adContainers.length);
-            
-            adContainers.forEach((container, index) => {
-                const rect = container.getBoundingClientRect();
-                const computedStyle = window.getComputedStyle(container);
-                
-                console.log(`\n--- Ad Container ${index + 1} ---`);
-                console.log('Client ID:', container.getAttribute('data-ad-client'));
-                console.log('Slot ID:', container.getAttribute('data-ad-slot'));
-                console.log('Ad Format:', container.getAttribute('data-ad-format'));
-                console.log('Container dimensions:', {
-                    width: rect.width,
-                    height: rect.height,
-                    top: rect.top,
-                    left: rect.left
-                });
-                console.log('Display style:', computedStyle.display);
-                console.log('Visibility:', computedStyle.visibility);
-                console.log('Has content:', container.innerHTML.length > 0);
-                console.log('Inner HTML preview:', container.innerHTML.substring(0, 100));
-                
-                // Check if container is properly initialized
-                if (container.innerHTML.trim() === '') {
-                    console.warn('⚠️ Container is empty - Ad may not have loaded');
-                } else if (container.innerHTML.includes('adsbygoogle')) {
-                    console.log('✅ Container appears to have AdSense content');
-                }
-                
-                // Check for ad-related attributes
-                const adsbygoogleStatus = container.getAttribute('data-adsbygoogle-status');
-                if (adsbygoogleStatus) {
-                    console.log('AdSense Status:', adsbygoogleStatus);
-                }
-            });
-            
-            // Check for common blocking issues
-            console.log('\n=== Potential Issues Check ===');
-            
-            // Check if running on localhost
-            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                console.warn('⚠️ Running on localhost - AdSense may not serve ads');
-            }
-            
-            // Check protocol
-            if (window.location.protocol !== 'https:') {
-                console.warn('⚠️ Site not using HTTPS - AdSense requires HTTPS');
-            }
-            
-            // Check for ad blocker (basic detection)
-            if (typeof window.google_ad_modifications !== 'undefined') {
-                console.warn('⚠️ Potential ad blocker detected');
-            }
-            
-            // Test if AdSense API is available
-            if (typeof window.adsbygoogle !== 'undefined' && window.adsbygoogle.loaded) {
-                console.log('✅ AdSense API appears to be loaded');
-            } else {
-                console.warn('⚠️ AdSense API may not be fully loaded');
-            }
-            
-            console.log('=== End AdSense Debug ===\n');
-        }
-        
-        // Enhanced error handling
-        window.addEventListener('error', function(e) {
-            if (e.target && e.target.src && e.target.src.includes('googlesyndication')) {
-                console.error('AdSense script error:', e);
-            }
-        });
-        
-        // Run check multiple times
-        window.addEventListener('load', function() {
-            setTimeout(checkAdSenseStatus, 2000);  // First check at 2 seconds
-            setTimeout(checkAdSenseStatus, 5000);  // Second check at 5 seconds
-            setTimeout(checkAdSenseStatus, 10000); // Final check at 10 seconds
-        });
-        
-        // Monitor AdSense loading
-        const originalPush = window.adsbygoogle.push;
-        window.adsbygoogle.push = function() {
-            console.log('AdSense push called with:', arguments);
-            return originalPush.apply(this, arguments);
-        };
-    </script>
-    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -301,25 +199,12 @@
     <!-- AdSense Ad Unit 1 - After Hero Section -->
     <section class="py-4 bg-gray-50 dark:bg-dark-lighter">
         <div class="container mx-auto px-6 flex justify-center">
-            <!-- Enhanced Debug Container -->
-            <div class="ad-debug-container" style="border: 2px dashed #3B82F6; min-height: 120px; width: 100%; max-width: 728px; display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #f0f8ff 25%, transparent 25%), linear-gradient(-45deg, #f0f8ff 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f8ff 75%), linear-gradient(-45deg, transparent 75%, #f0f8ff 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; margin: 10px 0; position: relative;">
-                <!-- Status indicator -->
-                <div style="position: absolute; top: 5px; left: 5px; background: #3B82F6; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-family: monospace;">
-                    AD SLOT #1 (8503367393)
-                </div>
-                <!-- Portfolio-Hero-Banner -->
-                <ins class="adsbygoogle"
-                     style="display:block; width: 100%; height: 100px;"
-                     data-ad-client="ca-pub-2330812727201394"
-                     data-ad-slot="8503367393"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <!-- Fallback message -->
-                <div class="ad-fallback" style="position: absolute; color: #666; text-align: center; font-size: 14px; z-index: -1;">
-                    <div>🔄 Loading Advertisement...</div>
-                    <div style="font-size: 12px; margin-top: 5px;">If ads don't appear, check console (F12) for debug info</div>
-                </div>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2330812727201394"
+                 data-ad-slot="8503367393"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
             <script>
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -473,25 +358,12 @@
     <!-- AdSense Ad Unit 2 - After Stats Section -->
     <section class="py-4">
         <div class="container mx-auto px-6 flex justify-center">
-            <!-- Enhanced Debug Container -->
-            <div class="ad-debug-container" style="border: 2px dashed #10B981; min-height: 120px; width: 100%; max-width: 728px; display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #f0fff4 25%, transparent 25%), linear-gradient(-45deg, #f0fff4 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0fff4 75%), linear-gradient(-45deg, transparent 75%, #f0fff4 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; margin: 10px 0; position: relative;">
-                <!-- Status indicator -->
-                <div style="position: absolute; top: 5px; left: 5px; background: #10B981; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-family: monospace;">
-                    AD SLOT #2 (4043934550)
-                </div>
-                <!-- Portfolio-Content-Mid -->
-                <ins class="adsbygoogle"
-                     style="display:block; width: 100%; height: 100px;"
-                     data-ad-client="ca-pub-2330812727201394"
-                     data-ad-slot="4043934550"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <!-- Fallback message -->
-                <div class="ad-fallback" style="position: absolute; color: #666; text-align: center; font-size: 14px; z-index: -1;">
-                    <div>🔄 Loading Advertisement...</div>
-                    <div style="font-size: 12px; margin-top: 5px;">If ads don't appear, check console (F12) for debug info</div>
-                </div>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2330812727201394"
+                 data-ad-slot="4043934550"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
             <script>
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
