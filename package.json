@@ -1,0 +1,10 @@
+{
+  "name": "dhruba-portfolio",
+  "version": "1.0.0",
+  "description": "Dhruba Khadka's Personal Portfolio",
+  "scripts": {
+    "start": "echo 'This is a static site, no server needed'"
+  },
+  "author": "Dhruba Khadka",
+  "license": "MIT"
+}

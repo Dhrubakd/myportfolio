@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Dark mode toggle
 const themeToggle = document.getElementById('theme-toggle');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 const html = document.documentElement;
 
 // Check system preference
@@ -175,15 +176,21 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
     html.classList.remove('dark');
 }
 
-// Toggle theme
-themeToggle.addEventListener('click', () => {
+// Function to toggle theme
+function toggleTheme() {
     html.classList.toggle('dark');
     if (html.classList.contains('dark')) {
         localStorage.theme = 'dark';
     } else {
         localStorage.theme = 'light';
     }
-});
+}
+
+// Toggle theme for desktop
+themeToggle.addEventListener('click', toggleTheme);
+
+// Toggle theme for mobile
+mobileThemeToggle.addEventListener('click', toggleTheme);
 
 // Handle navigation active state
 const navLinks = document.querySelectorAll('.nav-link');
