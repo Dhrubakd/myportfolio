@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhruba Khadka | Portfolio</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2330812727201394"
-     crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/x-icon">
@@ -22,6 +20,41 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2330812727201394"
         crossorigin="anonymous"></script>
     
+    <!-- AdSense Debug Script -->
+    <script>
+        window.adsbygoogle = window.adsbygoogle || [];
+        
+        // Debug function to check AdSense status
+        function checkAdSenseStatus() {
+            console.log('AdSense Status Check:');
+            console.log('adsbygoogle length:', window.adsbygoogle.length);
+            console.log('adsbygoogle object:', window.adsbygoogle);
+            
+            // Check if ads are blocked
+            if (typeof adBlockDetected !== 'undefined' && adBlockDetected) {
+                console.warn('Ad blocker detected! This might prevent ads from showing.');
+            }
+            
+            // Check ad containers
+            const adContainers = document.querySelectorAll('.adsbygoogle');
+            console.log('Found', adContainers.length, 'ad containers');
+            
+            adContainers.forEach((container, index) => {
+                console.log(`Ad container ${index + 1}:`, {
+                    'data-ad-client': container.getAttribute('data-ad-client'),
+                    'data-ad-slot': container.getAttribute('data-ad-slot'),
+                    'style.display': container.style.display,
+                    'innerHTML': container.innerHTML.length > 0 ? 'Has content' : 'Empty'
+                });
+            });
+        }
+        
+        // Run check after page loads
+        window.addEventListener('load', function() {
+            setTimeout(checkAdSenseStatus, 3000); // Wait 3 seconds for ads to load
+        });
+    </script>
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -29,7 +62,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
                     },
                     colors: {
                         primary: '#3B82F6',
@@ -69,7 +102,6 @@
     <!-- Navigation -->
     <nav class="fixed w-full max-w-5xl bg-white dark:bg-dark  z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- <a href="#" class="text-2xl font-bold text-primary font-heading">DK</a> -->
             <a href="#home">
                 <img src="dkimg.jpg" alt="DK Logo" class="h-10 w-10 rounded-full">
             </a>
@@ -126,7 +158,7 @@
                             Available for Freelance Work
                         </span>
                     </span>
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 font-heading opacity-0 animate-slide-right">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 opacity-0 animate-slide-right">
                         Hello, I'm <br><span class="text-primary relative inline-block">
                             <span id="typing-name"></span>
                             <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded"></span>
@@ -202,13 +234,16 @@
     <!-- AdSense Ad Unit 1 - After Hero Section -->
     <section class="py-4 bg-gray-50 dark:bg-dark-lighter">
         <div class="container mx-auto px-6 flex justify-center">
-            <!-- Portfolio-Hero-Banner -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2330812727201394"
-                 data-ad-slot="8503367393"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+            <!-- Debug: Ad placeholder with border -->
+            <div class="ad-debug-container" style="border: 2px dashed #ccc; min-height: 100px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; margin: 10px 0;">
+                <!-- Portfolio-Hero-Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2330812727201394"
+                     data-ad-slot="8503367393"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
             <script>
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -223,7 +258,7 @@
                 <span
                     class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-300 rounded-full text-sm font-medium mb-3">About
                     Me</span>
-                <h2 class="text-3xl font-bold text-center font-heading relative">
+                <h2 class="text-3xl font-bold text-center relative">
                     Know Me <span class="text-primary">Better</span>
                     <span
                         class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary/30 rounded"></span>
@@ -316,9 +351,6 @@
                             <i class="fas fa-paper-plane mr-2"></i>
                             <span>Hire Me</span>
                         </a>
-
-
-
                     </div>
                 </div>
 
@@ -365,13 +397,16 @@
     <!-- AdSense Ad Unit 2 - After Stats Section -->
     <section class="py-4">
         <div class="container mx-auto px-6 flex justify-center">
-            <!-- Portfolio-Content-Mid -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2330812727201394"
-                 data-ad-slot="4043934550"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+            <!-- Debug: Ad placeholder with border -->
+            <div class="ad-debug-container" style="border: 2px dashed #ccc; min-height: 100px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; margin: 10px 0;">
+                <!-- Portfolio-Content-Mid -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2330812727201394"
+                     data-ad-slot="4043934550"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
             <script>
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -508,7 +543,7 @@
             <div class="flex flex-col items-center mb-16">
                 <span
                     class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-300 rounded-full text-sm font-medium mb-3">Resume</span>
-                <h2 class="text-3xl font-bold text-center font-heading relative">
+                <h2 class="text-3xl font-bold text-center relative">
                     My <span class="text-primary">Journey</span>
                     <span
                         class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary/30 rounded"></span>
@@ -680,7 +715,7 @@
             <div class="flex flex-col items-center mb-16">
                 <span
                     class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-300 rounded-full text-sm font-medium mb-3">Portfolio</span>
-                <h2 class="text-3xl font-bold text-center font-heading relative">
+                <h2 class="text-3xl font-bold text-center relative">
                     Featured <span class="text-primary">Projects</span>
                     <span
                         class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary/30 rounded"></span>
@@ -972,7 +1007,7 @@
             <div class="flex flex-col items-center mb-16">
                 <span
                     class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-300 rounded-full text-sm font-medium mb-3">Testimonials</span>
-                <h2 class="text-3xl font-bold text-center font-heading relative">
+                <h2 class="text-3xl font-bold text-center relative">
                     Client <span class="text-primary">Feedback</span>
                     <span
                         class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary/30 rounded"></span>
@@ -1107,7 +1142,7 @@
             <div class="flex flex-col items-center mb-16">
                 <span
                     class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-primary dark:text-blue-300 rounded-full text-sm font-medium mb-3">Contact</span>
-                <h2 class="text-3xl font-bold text-center font-heading relative">
+                <h2 class="text-3xl font-bold text-center relative">
                     Get In <span class="text-primary">Touch</span>
                     <span
                         class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary/30 rounded"></span>
