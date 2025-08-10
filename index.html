@@ -45,6 +45,21 @@
                         'fade-in': 'fadeIn 1s ease-in-out',
                         'slide-up': 'slideUp 0.5s ease-out',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-right': 'slideRight 1s ease-out forwards',
+                        'slide-left': 'slideLeft 1s ease-out forwards',
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite'
+                    },
+                    animationDelay: {
+                        '100': '100ms',
+                        '200': '200ms',
+                        '300': '300ms',
+                        '400': '400ms',
+                        '500': '500ms',
+                        '600': '600ms',
+                        '700': '700ms',
+                        '800': '800ms',
                     },
                     boxShadow: {
                         'elegant': '0 0 15px rgba(0, 0, 0, 0.1)',
@@ -122,19 +137,20 @@
                             Available for Freelance Work
                         </span>
                     </span>
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 opacity-0 animate-slide-right">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-slide-right">
                         Hello, I'm <br><span class="text-primary relative inline-block">
-                            <span id="typing-name"></span>
+                            <span id="typing-name">Dhruba Khadka</span>
                             <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded"></span>
                         </span>
                     </h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 opacity-0 animate-slide-right delay-200">
-                        <span id="typing-role" class="text-gray-700 dark:text-gray-300"></span>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 animate-slide-right delay-200">
+                        <span id="typing-role" class="text-gray-700 dark:text-gray-300">Frontend Developer & UI/UX Designer</span>
                     </h2>
-                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-400 opacity-0 animate-slide-right delay-400 max-w-lg"
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-400 animate-slide-right delay-400 max-w-lg"
                         id="typing-desc">
+                        I'm a passionate frontend developer with 5+ years of experience creating responsive and user-friendly websites. I transform complex problems into elegant, intuitive interfaces.
                     </p>
-                    <div class="flex flex-wrap gap-4 opacity-0 animate-fade-up delay-600">
+                    <div class="flex flex-wrap gap-4 animate-fade-up delay-600">
                         <a href="#projects"
                             class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center">
                             <span>View Work</span>
@@ -148,7 +164,7 @@
                     </div>
 
                     <!-- Social Media Icons -->
-                    <div class="mt-10 opacity-0 animate-fade-up delay-800">
+                    <div class="mt-10 animate-fade-up delay-800">
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Follow me on:</p>
                         <div class="flex space-x-5">
                             <a href="https://github.com/Dhrubakd/myportfolio.git" target="_blank"
@@ -173,7 +189,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center relative">
-                    <div class="relative z-10 opacity-0 animate-slide-left delay-200">
+                    <div class="relative z-10 animate-slide-left delay-200">
                         <div
                             class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-lg">
                         </div>
