@@ -3,41 +3,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close mobile menu when clicking on a link
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenu.classList.add('hidden');
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
         });
-    });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
 
     // Active navigation link based on scroll position
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    window.addEventListener('scroll', function() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
+    if (sections.length > 0 && navLinks.length > 0) {
+        window.addEventListener('scroll', function() {
+            let current = '';
             
-            if (pageYOffset >= sectionTop - 300) {
-                current = section.getAttribute('id');
-            }
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
+    }
 
     // Project filtering
     const filterButtons = document.querySelectorAll('.project-filter');
@@ -118,19 +122,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     const formSuccess = document.getElementById('form-success');
     
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Simulate form submission
-        setTimeout(() => {
-            contactForm.reset();
-            formSuccess.classList.remove('hidden');
+    if (contactForm && formSuccess) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
+            // Simulate form submission
             setTimeout(() => {
-                formSuccess.classList.add('hidden');
-            }, 5000);
-        }, 1000);
-    });
+                contactForm.reset();
+                formSuccess.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 5000);
+            }, 1000);
+        });
+    }
 
     // Add animation classes when elements come into view
     const animateOnScroll = function() {
@@ -165,32 +171,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Dark mode toggle
-const themeToggle = document.getElementById('theme-toggle');
-const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-const html = document.documentElement;
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
 
-// Check system preference
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    html.classList.add('dark');
-} else {
-    html.classList.remove('dark');
-}
-
-// Function to toggle theme
-function toggleTheme() {
-    html.classList.toggle('dark');
-    if (html.classList.contains('dark')) {
-        localStorage.theme = 'dark';
-    } else {
-        localStorage.theme = 'light';
+    // Check if elements exist before adding event listeners
+    if (!themeToggle || !mobileThemeToggle) {
+        console.warn('Theme toggle elements not found');
+        return;
     }
-}
 
-// Toggle theme for desktop
-themeToggle.addEventListener('click', toggleTheme);
+    // Check system preference
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
 
-// Toggle theme for mobile
-mobileThemeToggle.addEventListener('click', toggleTheme);
+    // Function to toggle theme
+    function toggleTheme() {
+        html.classList.toggle('dark');
+        if (html.classList.contains('dark')) {
+            localStorage.theme = 'dark';
+        } else {
+            localStorage.theme = 'light';
+        }
+    }
+
+    // Toggle theme for desktop
+    themeToggle.addEventListener('click', toggleTheme);
+
+    // Toggle theme for mobile
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+});
 
 // Handle navigation active state
 const navLinks = document.querySelectorAll('.nav-link');
@@ -222,6 +236,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const cvModal = document.getElementById('cv-modal');
     const closeModal = document.getElementById('close-modal');
     const cvButtons = document.querySelectorAll('[href*="CV.pdf"]');
+
+    // Only proceed if modal elements exist
+    if (!cvModal || !closeModal) {
+        console.warn('CV modal elements not found. Skipping modal functionality.');
+        return;
+    }
 
     // Show modal when CV download is clicked
     cvButtons.forEach(button => {
@@ -292,36 +312,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Typing animations
 function initTypeAnimations() {
+    // Check if TypeIt is available
+    if (typeof TypeIt === 'undefined') {
+        console.warn('TypeIt library not loaded. Skipping typing animations.');
+        return;
+    }
+
+    // Check if elements exist
+    const nameElement = document.getElementById("typing-name");
+    const roleElement = document.getElementById("typing-role");
+    const descElement = document.getElementById("typing-desc");
+
     // Name typing
-    new TypeIt("#typing-name", {
-        strings: "Dhruba Khadka",
-        speed: 300,
-        waitUntilVisible: true,
-        loop: true,
-        breakLines: false,
-        deleteSpeed: 100,
-        lifelike: true,
-        nextStringDelay: 3000
-    }).go();
+    if (nameElement) {
+        new TypeIt("#typing-name", {
+            strings: "Dhruba Khadka",
+            speed: 300,
+            waitUntilVisible: true,
+            loop: true,
+            breakLines: false,
+            deleteSpeed: 100,
+            lifelike: true,
+            nextStringDelay: 3000
+        }).go();
+    }
 
     // Role typing with multiple roles
-    new TypeIt("#typing-role", {
-        strings: ["Frontend Developer ", "UI/UX Designer ", "Web Developer "],
-        speed: 300,
-        waitUntilVisible: true,
-        loop: true,
-        breakLines: false,
-        deleteSpeed: 100,
-        lifelike: true,
-        nextStringDelay: 3000
-    }).go();
+    if (roleElement) {
+        new TypeIt("#typing-role", {
+            strings: ["Frontend Developer ", "UI/UX Designer ", "Web Developer "],
+            speed: 300,
+            waitUntilVisible: true,
+            loop: true,
+            breakLines: false,
+            deleteSpeed: 100,
+            lifelike: true,
+            nextStringDelay: 3000
+        }).go();
+    }
 
     // Description typing
-    new TypeIt("#typing-desc", {
-        strings: "I build exceptional digital experiences that are fast, accessible, and visually appealing. ",
-        speed: 50,
-        waitUntilVisible: true
-    }).go();
+    if (descElement) {
+        new TypeIt("#typing-desc", {
+            strings: "I build exceptional digital experiences that are fast, accessible, and visually appealing. ",
+            speed: 50,
+            waitUntilVisible: true
+        }).go();
+    }
 }
 
 // Scroll animations
@@ -394,10 +431,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Number counter animation
+        // Set current year in footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }        // Number counter animation
         function setupCounters() {
             const counterElements = document.querySelectorAll('.counter');
             const speed = 200;

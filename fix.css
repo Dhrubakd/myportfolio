@@ -1,0 +1,4 @@
+/* Suppress TailwindCSS production warnings temporarily */
+.tailwindcss-warning {
+    display: none !important;
+}
